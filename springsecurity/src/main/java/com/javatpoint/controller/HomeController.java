@@ -49,24 +49,25 @@ public class HomeController {
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String user(Model model) {
-		// Obtener usuario logueado
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		model.addAttribute("usuario", "Cliente " + username);
+	    // Obtengo usuario solo para el saludo
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
+	    model.addAttribute("usuario", "Cliente " + username);
 
-		// Obtener prÃ©stamos del cliente logueado
-		// Asumimos que el username corresponde al DNI del cliente
-		Cliente clienteLogueado = Cliente.getCliente(username);
+	    // Cargo **todos** los préstamos hardcodeados
+	    List<Prestamo> todosLosPrestamos = Prestamo.getListaPrestamos();
+	    model.addAttribute("prestamos", todosLosPrestamos);
 
-		List<Prestamo> prestamosCliente = Prestamo.getListaPrestamos().stream()
-				.filter(prestamo -> prestamo.getCliente() != null && prestamo.getCliente().getDNI().equals(username))
-				.collect(Collectors.toList());
+	    // Opcional: nombre genérico o del primer cliente
+	    Cliente primerCliente = Cliente.getListaClientes().isEmpty() 
+	        ? null 
+	        : Cliente.getListaClientes().get(0);
+	    String clienteNombre = primerCliente != null
+	        ? primerCliente.getNombre() + " " + primerCliente.getApellido()
+	        : "Invitado";
+	    model.addAttribute("clienteNombre", clienteNombre);
 
-		model.addAttribute("prestamos", prestamosCliente);
-		model.addAttribute("clienteNombre",
-				clienteLogueado != null ? clienteLogueado.getNombre() + " " + clienteLogueado.getApellido() : username);
-
-		return "user";
+	    return "user";
 	}
 
 	// MÃ©todo para inicializar datos hardcodeados

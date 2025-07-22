@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,22 +135,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Juan</td>
-                    <td>1234</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Maria</td>
-                    <td>abcd</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Carlos</td>
-                    <td>pass123</td>
-                </tr>
-            </tbody>
+    <c:forEach var="cliente" items="${clientes}">
+        <tr>
+            <td>${cliente.DNI}</td>
+            <td>${cliente.nombre} ${cliente.apellido}</td>
+            <td>${cliente.email}</td>
+        </tr>
+    </c:forEach>
+</tbody>
         </table>
     </div>
 
