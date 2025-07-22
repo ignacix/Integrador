@@ -8,11 +8,10 @@ public class MvcWebApplicationInitializer extends
     }    
     @Override    
     protected Class<?>[] getServletConfigClasses() {    
-        // TODO Auto-generated method stub    
-        return null;    
+        return new Class[] { AppConfig.class };    
     }   
     @Override    
     protected String[] getServletMappings() {    
         return new String[] { "/" };    
     }    
-} 
+}

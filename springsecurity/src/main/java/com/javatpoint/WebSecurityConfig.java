@@ -7,22 +7,35 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;    
 import com.javatpoint.TipoUsuario;
+
 @EnableWebSecurity    
 @ComponentScan("com.javatpoint")    
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {    
 	
-	
-	
-	
-	
   @Bean    
   public UserDetailsService userDetailsService() {    
       InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();    
+      
+      // Usuario administrador
       manager.createUser(User.withDefaultPasswordEncoder()  
       .username("admin").password("admin123").roles("ADMIN").build());  
       
+      // Usuarios clientes basados en los DNI de los clientes hardcodeados
       manager.createUser(User.withDefaultPasswordEncoder()  
-    		 .username("user").password("user123").roles("USER").build()); 
+    		 .username("12345678").password("juan123").roles("USER").build()); // Juan Pérez
+      
+      manager.createUser(User.withDefaultPasswordEncoder()  
+    		 .username("87654321").password("maria123").roles("USER").build()); // María García
+      
+      manager.createUser(User.withDefaultPasswordEncoder()  
+    		 .username("11223344").password("carlos123").roles("USER").build()); // Carlos López
+      
+      manager.createUser(User.withDefaultPasswordEncoder()  
+    		 .username("44332211").password("ana123").roles("USER").build()); // Ana Martínez
+      
+      manager.createUser(User.withDefaultPasswordEncoder()  
+    		 .username("55667788").password("luis123").roles("USER").build()); // Luis Rodríguez
+      
       return manager;    
   }    
   
@@ -30,7 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   public TipoUsuario tipoUsuario() {
       return new TipoUsuario();
   }
-  
   
   @Override    
   protected void configure(HttpSecurity http) throws Exception {    
@@ -48,5 +60,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .logout()  
       .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));      
   }
-
-}    
+} 
