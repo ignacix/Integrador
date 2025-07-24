@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Controller
 public class HomeController {
 
-	// Método para inicializar datos hardcodeados (se ejecuta al inicio)
+	// Metodo para inicializar datos hardcodeados (se ejecuta al inicio)
 	static {
 		inicializarDatos();
 	}
@@ -70,32 +70,32 @@ public class HomeController {
 	    return "user";
 	}
 
-	// Método para inicializar datos hardcodeados
+	// Metodo para inicializar datos hardcodeados
 	private static void inicializarDatos() {
 		// Crear clientes hardcodeados
-		Cliente cliente1 = new Cliente("12345678", "Juan", "Pérez", "Av. Corrientes 1234", "1001", "Buenos Aires",
+		Cliente cliente1 = new Cliente("12345678", "Juan", "Perez", "Av. Corrientes 1234", "1001", "Buenos Aires",
 				"Argentina", LocalDate.of(1985, 5, 15), "juan.perez@email.com", "11-4567-8901", true);
 
-		Cliente cliente2 = new Cliente("87654321", "María", "García", "Av. Santa Fe 5678", "1002", "Buenos Aires",
+		Cliente cliente2 = new Cliente("87654321", "Maria", "Garcia", "Av. Santa Fe 5678", "1002", "Buenos Aires",
 				"Argentina", LocalDate.of(1990, 8, 22), "maria.garcia@email.com", "11-9876-5432", true);
 
-		Cliente cliente3 = new Cliente("11223344", "Carlos", "López", "Av. Rivadavia 9101", "1003", "Buenos Aires",
+		Cliente cliente3 = new Cliente("11223344", "Carlos", "Lopez", "Av. Rivadavia 9101", "1003", "Buenos Aires",
 				"Argentina", LocalDate.of(1978, 12, 3), "carlos.lopez@email.com", "11-1122-3344", false);
 
-		Cliente cliente4 = new Cliente("44332211", "Ana", "Martínez", "Av. Belgrano 1121", "1004", "Buenos Aires",
+		Cliente cliente4 = new Cliente("44332211", "Ana", "Martinez", "Av. Belgrano 1121", "1004", "Buenos Aires",
 				"Argentina", LocalDate.of(1992, 3, 10), "ana.martinez@email.com", "11-4433-2211", true);
 
-		Cliente cliente5 = new Cliente("55667788", "Luis", "Rodríguez", "Av. Callao 3141", "1005", "Buenos Aires",
+		Cliente cliente5 = new Cliente("55667788", "Luis", "Rodriguez", "Av. Callao 3141", "1005", "Buenos Aires",
 				"Argentina", LocalDate.of(1988, 7, 25), "luis.rodriguez@email.com", "11-5566-7788", true);
 
-		// Agregar clientes a la lista estática
+		// Agregar clientes a la lista estatica
 		Cliente.getListaClientes().add(cliente1);
 		Cliente.getListaClientes().add(cliente2);
 		Cliente.getListaClientes().add(cliente3);
 		Cliente.getListaClientes().add(cliente4);
 		Cliente.getListaClientes().add(cliente5);
 
-		// Crear préstamos hardcodeados
+		// Crear prestamos hardcodeados
 		Prestamo prestamo1 = new Prestamo(1, LocalDate.of(2024, 1, 15), cliente1, 50000.0f, 12, true);
 
 		Prestamo prestamo2 = new Prestamo(2, LocalDate.of(2023, 6, 1), cliente1, 200000.0f, 240, true);
@@ -108,7 +108,7 @@ public class HomeController {
 
 		Prestamo prestamo6 = new Prestamo(6, LocalDate.of(2023, 12, 10), cliente5, 120000.0f, 84, true);
 
-		// Agregar préstamos a la lista estática
+		// Agregar prestamos a la lista estatica
 		Prestamo.getListaPrestamos().add(prestamo1);
 		Prestamo.getListaPrestamos().add(prestamo2);
 		Prestamo.getListaPrestamos().add(prestamo3);
